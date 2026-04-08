@@ -1,0 +1,12 @@
+services:
+  paperless-mcp:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile
+    container_name: paperless-mcp
+    restart: unless-stopped
+    ports:
+      - "8013:8013"
+    environment:
+      PAPERLESS_URL: ${PAPERLESS_URL:-http://192.168.7.203:8000}
+      PAPERLESS_API_TOKEN: ${PAPERLESS_API_TOKEN:-}
